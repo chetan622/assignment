@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Fetch API Example</title>
+</head>
+<body>
+    <div id="results"></div>
+    <button id="todo" onclick="FetchTodo()">FetchTodo</button>
+    <a href="get.html" >For Adding a data in Todo</a>
+</body>
+<script>
+    function FetchTodo(){
+        fetch("https://jsonplaceholder.typicode.com/todos/1")
+        .then(function(data){
+            console.log(data)
+          return data.json()
+        })
+        .then(function(data){
+            var results = document.getElementById('results')
+            results.innerHTML = `<p>Tittle Of Todo : ${data.title}</p><p>ID of Todo : ${data.id}</p><p>Completed of todo : ${data.completed}</p>`
+            console.log(data)
+        })
+        .catch(function(error){
+            console.log(error)
+        })
+    }
+</script>
+</html>
